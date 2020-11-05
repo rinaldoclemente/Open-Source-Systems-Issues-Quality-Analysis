@@ -1,3 +1,42 @@
-# Open-Source-System-Issues-Quality-Analysis
+Issues Download [![Build Status](https://travis-ci.org/psgs/IssuesDownload.png?branch=master)](https://travis-ci.org/psgs/IssuesDownload)    [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/psgs/issuesdownload/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+====================
 
-Lo scopo della questa tesi è stato di analizzare i bug report di uno dei sistemi ERP Open Source più diffusi, Odoo , applicando il modello di qualità Zimmermann. Il primo passo effettuato è stato quello relativo al download delle issues OPEN e CLOSED del codice sorgente di Odoo, riportate in un file, mediante l'uso di IssuesDownaload, un codice Java scaricato da GitHub e modificato in base alle nostre esigenze. All'interno del file creato, sono state trovate 17 categorie principali, con le quali raggruppare la maggior parte delle issues. Dopo aver fatto ciò, il secondo passo è stato quello dell'analisi dei dati con diagrammi, analisi statistica e calcolo di classificazione e predizione, tramite i quali siamo giunti a più conclusioni: per prima cosa si può dire che la maggior parte delle issues, sia OPEN che CLOSED, sono incomplete o mancano di parametri fondamentali per la risoluzione di un bug; inoltre si è notato che all'aumentare della reputation di un utente aumentano anche i commenti sul bug report. Per quanto riguarda l'analisi statistica si è osservato come i parametri sono dipendenti tra loro e, tramite gli interval plot, si nota come alcune categorie incidono di più su specifici parametri. Infine, l'ultima analisi effettuata è stata quella sugli algoritmi di apprendimento automatico, con lo scopo di trovare quale tra i tanti algoritmi abbia accuratezza migliore. Ciò è stato effettuato sul software Weka e l'algoritmo con migliore accuratezza trovato (68.8%) è l'albero RandomForest. Per sviluppi futuri, l'applicazione può essere ulteriormente raffinata per includere più parametri e più categorie su cui svolgere l'analisi, inoltre è possibile migliorare il modello di qualità aumentando il numero di issues prese in considerazione e selezionare pari numero issues di tutti i valori della scala Likert, al fine di trovare il miglior algoritmo di apprendimento automatico.
+Issues Download is a lightweight java application that will pull issues from a github.com repository, and write them to a .csv file. IssuesDownload uses [Kohsuke Kawaguchi's GitHub API for Java](http://github-api.kohsuke.org) to connect to GitHub when writing issues.
+
+To run the application once compiled, simply run the .jar file that should have been compiled.
+Once the process is complete, a .csv file should contain issue information in the .jar file directory.
+Please Note: When the .jar file is run, it will overwrite any other issues.csv files in the jar file directory.
+
+If downloading Issues doesn't work after multiple tries, you may need to copy the [IssuesDownload properties file](https://github.com/psgs/IssuesDownload/blob/master/src/main/resources/IssuesDownload.properties), and place it in the same directory as the .jar file, then edit the file to contain your [personal or an application access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use).
+
+Releases
+--------
+
+- [v1.0](https://github.com/psgs/IssuesDownload/releases/download/v1.0/IssuesDownload-1.0-RELEASE.jar)
+
+Screenshots
+-----------
+
+![Screenshot One](http://i.imgur.com/FBdjxlQ.png)
+
+CSV Format
+----------
+
+The .csv format used is as follows:
+Id, Title, Creator, Assignee, Milestone, State, Body Text.
+
+The first line of the csv file shows the format used, and therefore does not display any information pulled from issues.
+
+ID | Title | Creator | Assignee | Milestone | State | Body Text
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
+1 | Add a Bitdeli Badge to README | bitdeli-chef | psgs | First-Release | CLOSED | Pull request made by @psgs at https://bitdeli.com
+
+Compiling
+---------
+
+Don't feel like compiling? You can download a pre-compiled release from the [Releases section](https://github.com/psgs/IssuesDownload#releases).
+
+IssuesDownload uses [Apache Maven 3](http://maven.apache.org/) to compile!
+
+To compile IssuesDownload, simply install [Apache Maven](http://maven.apache.org/), and run:
+```mvn -f pom.xml clean install -P shade```
